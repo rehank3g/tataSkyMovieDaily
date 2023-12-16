@@ -11,7 +11,7 @@ def getContentInfo(contentId):
     content_meta = x.json()['data']['meta']
     content_genre = x.json()['data']['meta']['genre']
     content_detail_dict = x.json()['data']['detail']
-    content_logo = content_meta.get('previewImage','')
+    content_logo = content_meta.get('posterImage','')
     #covert content_genre list to string with comma
     content_genres = ','.join(content_genre)
 
