@@ -9,11 +9,11 @@ def getContentInfo(contentId):
     x = requests.get(url)
 
     content_meta = x.json()['data']['meta']
-    content_genre = x.json()['data']['meta']['genre']
+    content_genre = x.json()['data']['meta']['genre'][0]
     content_detail_dict = x.json()['data']['detail']
     content_logo = content_meta.get('posterImage','')
-    #covert content_genre list to string with comma
-    content_genres = ','.join(content_genre)
+
+
 
     onecontent = {
         "content_id": str(contentId),
@@ -22,13 +22,13 @@ def getContentInfo(contentId):
         "content_url": content_detail_dict.get('dashWidewinePlayUrl', ''),
         "content_entitlements": content_detail_dict.get('entitlements', ''),
         "content_logo": content_logo,
-        "content_genre": content_genres
+        "content_genre": content_genre
     }
     content_list.append(onecontent)
 
 def savecontentsToFile():
     print(len(content_list))
-    with open("allcontents.json", "w") as content_list_file:
+    with open("allContents.json", "w") as content_list_file:
         json.dump(content_list, content_list_file)
         content_list_file.close()
 
