@@ -22,7 +22,7 @@ def processTokenChunks(contentList):
         ls_session_key = jwt.generateJWT(content['content_id'], result, iterative=False)
         if ls_session_key != "":
             licenseUrl = content['content_license_url'] + "&ls_session=" + ls_session_key
-            kodiPropLicenseUrl = "#KODIPROP:inputstream.adaptive.license_key=" + licenseUrl + "|Content-Type=application/octet-stream|R{SSM}|"
+            kodiPropLicenseUrl = "#KODIPROP:inputstream.adaptive.license_key=" + licenseUrl
         else:
             print("Didn't get license for content: Id: {0} Name:{1}".format(content['content_id'],
                                                                             content['content_name']))
